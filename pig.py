@@ -13,9 +13,25 @@ def roll():
 # value = roll()
 # print(value)
 
-# set up an "input" to enter the num of players 2-4
-# while true -break put if input is a valid number
-# check to make sure it is a valid number .isdigit/int
+
+# input to capture number of players
+while True:
+  players = input('Enter number of players from 2-4: ')
+  # check if input is a num
+  if players.isdigit():
+    # turn string to int
+    players = int(players)
+    # check num between 2-4
+    if 2 <= players <= 4:
+      print("Must be between 2-4 players.")
+      break
+  else:
+    # invalid num try again
+    print("invalid number, try again.")
+print(players)
+
+
+
 
 # variables
   # max_score
