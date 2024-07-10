@@ -36,24 +36,39 @@ while True:
 max_score = 50
 player_scores = [0 for _ in range(players)]
 
-# go through players turns
-# while players scores are less than max-score
-  # should-roll - input y
-  # grab that roll - if that roll = 1 - turn is done
-  # else: add the value to players score
-# for loop around this while - to get each players index
-while max(player_scores) < max_score:
-  # check if player wants to roll
-  should_roll = input("Do you want to roll? Press y: ")
-  if should_roll.lower() != 'y':
-    break
-  value = roll()
 
-  # check if value was a 1
-  if value == 1:
-    print("You rolled a 1, turn DONE!")
-  else:
-    print("You rolled a:", value)
+# simulate the turns for the players2
+while max(player_scores) < max_score:
+
+  for player_idx in range(players):
+    print("\nPlayer number:", player_idx + 1, "turn just started!\n")
+
+    current_score = 0
+
+    while True:
+      # check if player wants to roll
+      should_roll = input("Do you want to roll? Press y: ")
+      if should_roll.lower() != 'y':
+        break
+      value = roll()
+
+      # check if value was a 1
+      if value == 1:
+        print("You rolled a 1, turn DONE!")
+        current_score = 0
+        break
+      else:
+        # add to players score
+        current_score += value
+        print("You rolled a:", value)
+      print("Your score:", current_score)
+
+    # individual players score + the value of current turn
+    player_scores[player_idx] += current_score
+    print('Your total score is: ', player_scores[player_idx])
+
+
+
 
 # max_score exit once all the turn have completed rolls
 # exit - with who won
